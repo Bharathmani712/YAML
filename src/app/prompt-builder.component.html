@@ -1,0 +1,236 @@
+<mat-card class="card shadow">
+  <mat-card-header>
+    <mat-card-title>Build a Sora Image YAML Prompt</mat-card-title>
+    <mat-card-subtitle>Topic → type → options → preview</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="grid">
+      <div class="col">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Topic</mat-label>
+          <input matInput placeholder="e.g., Consent & Communication" formControlName="topic">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Prompt Type</mat-label>
+          <mat-select formControlName="promptType">
+            <mat-option *ngFor="let t of ['Title Page (Text-only Poster)','Subtitle Page (Photoreal)','Character Sheet: Sora Kite','Character Sheet: Pixar Student','Scene: Photoreal Classroom','Dialogue Panel','Expression & Pose Sheet','3D Foreground Text']" [value]="t">{{t}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Title (optional)</mat-label>
+          <input matInput formControlName="title">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Subtitle (optional)</mat-label>
+          <input matInput formControlName="subtitle">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Caption / Rationale / Notes</mat-label>
+      <textarea matInput rows="3" formControlName="caption"></textarea>
+    </mat-form-field>
+
+    <div class="grid">
+      <div class="col">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Mood</mat-label>
+          <mat-select formControlName="mood">
+            <mat-option *ngFor="let m of options.moods" [value]="m">{{m}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Aspect Ratio</mat-label>
+          <mat-select formControlName="aspect_ratio">
+            <mat-option *ngFor="let ar of options.aspectRatios" [value]="ar">{{ar}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Style</mat-label>
+          <mat-select formControlName="style">
+            <mat-option *ngFor="let s of options.styles" [value]="s">{{s}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Camera</mat-label>
+          <mat-select formControlName="camera">
+            <mat-option *ngFor="let c of options.cameras" [value]="c">{{c}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Lighting</mat-label>
+          <mat-select formControlName="lighting">
+            <mat-option *ngFor="let l of options.lighting" [value]="l">{{l}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Composition</mat-label>
+          <mat-select formControlName="composition">
+            <mat-option *ngFor="let comp of options.composition" [value]="comp">{{comp}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Background</mat-label>
+      <mat-select formControlName="background">
+        <mat-option *ngFor="let b of options.background" [value]="b">{{b}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-slide-toggle formControlName="includeSoraCameo">Include Sora cameo</mat-slide-toggle>
+    <button mat-button type="button" (click)="insertSoraReusable()" matTooltip="Append the standard Sora cameo text into caption">
+      <mat-icon>add</mat-icon> Insert Sora reusable cameo text
+    </button>
+
+    <mat-divider class="my-3"></mat-divider>
+
+    <div class="grid">
+      <div class="col">
+        <h3>Characters</h3>
+        <div class="row" *ngFor="let c of charactersFA.controls; let i = index;">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Character {{i+1}}</mat-label>
+            <input matInput [formControl]="c">
+            <button matSuffix mat-icon-button (click)="removeCharacter(i)" matTooltip="Remove"><mat-icon>delete</mat-icon></button>
+          </mat-form-field>
+        </div>
+        <button mat-stroked-button type="button" (click)="addCharacter()"><mat-icon>person_add</mat-icon> Add character</button>
+      </div>
+
+      <div class="col">
+        <h3>Dialogue</h3>
+        <div class="row" *ngFor="let d of dialogueFA.controls; let i = index;" [formGroup]="d">
+          <div class="row two">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Speaker</mat-label>
+              <input matInput formControlName="speaker">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Line</mat-label>
+              <input matInput formControlName="line">
+              <button matSuffix mat-icon-button (click)="removeDialogue(i)" matTooltip="Remove"><mat-icon>delete</mat-icon></button>
+            </mat-form-field>
+          </div>
+        </div>
+        <button mat-stroked-button type="button" (click)="addDialogue()"><mat-icon>forum</mat-icon> Add line</button>
+      </div>
+    </div>
+
+    <h3>Text Overlays (for titles/captions inside image)</h3>
+    <div class="row" *ngFor="let o of overlaysFA.controls; let i = index;" [formGroup]="o">
+      <div class="row two">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Text</mat-label>
+          <input matInput formControlName="text">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Position</mat-label>
+          <input matInput formControlName="position" placeholder="e.g., top-center">
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Style</mat-label>
+        <input matInput formControlName="style" placeholder="e.g., bold headline, generous spacing">
+        <button matSuffix mat-icon-button (click)="removeOverlay(i)" matTooltip="Remove"><mat-icon>delete</mat-icon></button>
+      </mat-form-field>
+    </div>
+    <button mat-stroked-button type="button" (click)="addOverlay()"><mat-icon>title</mat-icon> Add overlay</button>
+
+    <mat-divider class="my-3"></mat-divider>
+
+    <h3>Safeguards</h3>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Policy guard-rails</mat-label>
+      <mat-select formControlName="safeguards" multiple>
+        <mat-option *ngFor="let s of options.safeguardsBase" [value]="s">{{s}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <ng-container *ngIf="form.get('promptType')?.value === '3D Foreground Text'">
+      <mat-divider class="my-3"></mat-divider>
+      <h3>3D Text</h3>
+      <div [formGroup]="text3dFG">
+        <div class="grid">
+          <div class="col">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Text</mat-label>
+              <input matInput formControlName="text">
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Extrude</mat-label>
+              <mat-select formControlName="extrude">
+                <mat-option value="low">low</mat-option>
+                <mat-option value="medium">medium</mat-option>
+                <mat-option value="high">high</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="grid">
+          <div class="col">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Material</mat-label>
+              <mat-select formControlName="material">
+                <mat-option value="matte">matte</mat-option>
+                <mat-option value="glossy">glossy</mat-option>
+                <mat-option value="metallic">metallic</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Alignment</mat-label>
+              <mat-select formControlName="alignment">
+                <mat-option value="left">left</mat-option>
+                <mat-option value="center">center</mat-option>
+                <mat-option value="right">right</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-slide-toggle formControlName="bevel">Bevel</mat-slide-toggle>
+      </div>
+    </ng-container>
+
+    <mat-divider class="my-3"></mat-divider>
+    <div class="actions">
+      <button mat-raised-button color="primary" (click)="applyPreset(presets[0].patch)">Preset: Subtitle + Sora cameo</button>
+      <button mat-stroked-button (click)="applyPreset(presets[1].patch)">Preset: Sora character sheet</button>
+      <button mat-stroked-button (click)="applyPreset(presets[2].patch)">Preset: Dialogue panel</button>
+      <button mat-stroked-button (click)="applyPreset(presets[3].patch)">Preset: 3D text</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<app-yaml-preview [yamlText]="yaml()"></app-yaml-preview>

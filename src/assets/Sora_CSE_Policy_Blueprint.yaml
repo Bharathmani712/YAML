@@ -1,0 +1,232 @@
+sora_picture_book:
+  title: "Mind the Gap: A Parent-Led Bridge to Comprehensive, Rights-Based CSE"
+  audience: "Policy makers, program leads, CSR partners"
+  format: "16 pages (8 spreads) + inside notes"
+  master_sora_prompt: |
+    clean vector + soft watercolor textures, 3:2 landscape, gentle ambient light; friendly paper-
+    kite mascot named Sora with warm eyes and a short string tail, subtle Indian textile motif,
+    small clipboard; inclusive Indian setting; policy brief mood; no text, no logos, no watermarks;
+    no explicit anatomy, no medical procedures, no violence
+  safety_guardrails:
+    - "No explicit anatomy or procedures"
+    - "No text overlays/logos/watermarks"
+    - "Inclusive, non-sexualized, age-appropriate visuals"
+    - "Respectful distance and dignified tone"
+  characters:
+    - name: "Sora (Narrator)"
+      role: "Non-human, neutral guide"
+      look: "Friendly paper-kite mascot with gentle eyes; subtle Indian textile motif; short string tail; small clipboard."
+      palette: "Indigo #26457C, saffron #F4A32C, teal #2B8C82, warm cream #F7F2E9"
+      traits: "Wise, kind, non-judgmental; gestures with string tail; holds infocards."
+      do: "Inclusive settings; soft smiles; charts/maps; policy-brief mood."
+      dont: "No slapstick; no medical instruments implying procedures."
+      base_prompt: |
+        friendly paper-kite mascot named Sora with warm eyes and a short string tail, subtle Indian
+        textile pattern, holding a small clipboard; clean vector + soft watercolor wash; gentle
+        lighting; policy brief mood; 3:2 aspect; no text in image, no logos, no watermarks
+    - name: "Asha Menon (Policy Maker)"
+      role: "Education/Health policy leader"
+      look: "Indian woman ~45, short hair, rimless glasses; handloom sari (indigo/cream); govt office badge."
+      traits: "Calm authority, listener’s posture."
+      base_prompt: |
+        Indian woman policy leader ~45 in handloom sari (indigo/cream), rimless glasses, attentive
+        posture, tidy office backdrop with Indian emblem subtly implied
+    - name: "Rajiv “Raj” Nair (Parent-Trainer)"
+      role: "Private Academy trainer/coach"
+      look: "Indian man ~38, medium build, neatly trimmed beard; smart-casual kurta + blazer; tablet in hand."
+      traits: "Approachable coach energy."
+      base_prompt: |
+        Indian male trainer ~38, kurta with blazer, holding tablet, approachable smile, workshop setting
+        with flip-charts
+    - name: "Meera Thomas (Parent Trainee)"
+      role: "Parent learner"
+      look: "Indian woman ~34, hair tied back; churidar; tote bag with notebook peeking."
+      traits: "Curious, engaged."
+      base_prompt: |
+        Indian woman ~34, churidar, taking notes, attentive expression, community center ambiance
+    - name: "Dr. Ananya (Adolescent Health Counselor)"
+      role: "Clinician and referral point"
+      look: "Indian woman ~40; white coat over pastel kurta; ID lanyard."
+      traits: "Trustworthy, warm."
+      base_prompt: |
+        Indian woman clinician ~40, white coat over pastel kurta, calm clinic with youth-friendly
+        posters (abstract icons only)
+    - name: "Teens (Aarav, Zoya, Neel)"
+      role: "Adolescents in neutral settings"
+      look: "Aarav 14 (school polo, bicycle helmet); Zoya 13 (ponytail, art backpack); Neel 15 (non-binary, short curly hair, denim jacket, enamel pins)."
+      traits: "Positive, everyday demeanor."
+      base_prompt: |
+        three Indian teens (Aarav 14, Zoya 13, Neel 15 nb) in everyday, non-sexualized settings;
+        school/home table; respectful distance; positive body language
+  pages:
+    - page: 1
+      title: "Cover — Mind the Gap"
+      purpose: "Set theme: policy gap + parent bridge."
+      caption: "Mind the Gap: A Parent-Led Bridge to Comprehensive, Rights-Based CSE"
+      sora_image_prompt: |
+        clean vector + soft watercolor textures, 3:2 landscape, gentle ambient light; friendly paper-
+        kite mascot named Sora with warm eyes and a short string tail, subtle Indian textile motif,
+        small clipboard; inclusive Indian setting; policy brief mood; no text, no logos, no watermarks;
+        no explicit anatomy, no medical procedures, no violence; wide city education skyline, gentle
+        bridge motif made of books connecting a school building and a home, Sora hovering as guide with
+        clipboard, dignified title-page composition
+    - page: 2
+      title: "Letter to Policy Makers"
+      purpose: "Empathy + mandate: healthy, safe adolescence."
+      caption: "We all want healthy, safe, empowered adolescents. Here’s a practical, lawful bridge."
+      sora_image_prompt: |
+        clean vector + soft watercolor textures, 3:2 landscape, gentle ambient light; friendly paper-
+        kite mascot named Sora with warm eyes and a short string tail, subtle Indian textile motif,
+        small clipboard; inclusive Indian setting; policy brief mood; no text, no logos, no watermarks;
+        no explicit anatomy, no medical procedures, no violence; policy office with soft sunlight, open
+        folder labeled ‘youth wellbeing’ (icon only), Sora pointing to a simple map from ‘School’ to
+        ‘Home’, include: Indian woman policy leader ~45 in handloom sari (indigo/cream)
+    - page: 3
+      title: "The Gap (Snapshot)"
+      purpose: "Show five gaps succinctly."
+      caption: "ABSHWP is strong on health & safety. But five content gaps remain for full, explicit CSE."
+      sora_image_prompt: |
+        clean vector + soft watercolor textures, 3:2 landscape, gentle ambient light; friendly paper-
+        kite mascot named Sora with warm eyes and a short string tail, subtle Indian textile motif,
+        small clipboard; inclusive Indian setting; policy brief mood; no text, no logos, no watermarks;
+        no explicit anatomy, no medical procedures, no violence; infographic board with five abstract
+        icons: communication consent bubble, heart-hands (positive sexuality), rainbow-shield
+        (inclusion), clinic building (SRH services), checklist (rights & M&E); policy-style
+    - page: 4
+      title: "Why Parents? Why Now?"
+      purpose: "Rationale for private training of parents."
+      caption: "Parents can safely, age-appropriately extend learning at home—aligned with rights and local law."
+      sora_image_prompt: |
+        clean vector + soft watercolor textures, 3:2 landscape, gentle ambient light; friendly paper-
+        kite mascot named Sora with warm eyes and a short string tail, subtle Indian textile motif,
+        small clipboard; inclusive Indian setting; policy brief mood; no text, no logos, no watermarks;
+        no explicit anatomy, no medical procedures, no violence; evening community workshop, flip-chart
+        titled ‘Home Academy’ (icon only), warm, respectful; include: Indian male trainer ~38 and Indian
+        woman ~34 parent trainee
+    - page: 5
+      title: "The Bridge Model"
+      purpose: "Show school ↔ home complementarity."
+      caption: "School stays within ABSHWP. Home Academy fills the rest—using vetted private materials."
+      sora_image_prompt: |
+        clean vector + soft watercolor textures, 3:2 landscape, gentle ambient light; friendly paper-
+        kite mascot named Sora with warm eyes and a short string tail, subtle Indian textile motif,
+        small clipboard; inclusive Indian setting; policy brief mood; no text, no logos, no watermarks;
+        no explicit anatomy, no medical procedures, no violence; diagram table: left icon column
+        ‘School’ (shield, book), right icon column ‘Home’ (house, heart), center ‘Bridge’ (toolkit box),
+        arrows; no text, just icons; clear
+    - page: 6
+      title: "Module A: Consent & Communication (15–18+)"
+      purpose: "Consent as skill, not just safety."
+      caption: "Parents practice saying, asking, hearing ‘yes/no’ respectfully; power and pressure awareness."
+      sora_image_prompt: |
+        clean vector + soft watercolor textures, 3:2 landscape, gentle ambient light; friendly paper-
+        kite mascot named Sora with warm eyes and a short string tail, subtle Indian textile motif,
+        small clipboard; inclusive Indian setting; policy brief mood; no text, no logos, no watermarks;
+        no explicit anatomy, no medical procedures, no violence; living-room table role-play scene:
+        parent and older teen with cue cards (icons: ear, speech bubble, pause symbol); calm,
+        instructional mood
+    - page: 7
+      title: "Module B: Positive Sexuality & Respect"
+      purpose: "Healthy, shame-free framing."
+      caption: "Body respect, feelings, boundaries, kindness; age-appropriate, non-graphic, dignity forward."
+      sora_image_prompt: |
+        clean vector + soft watercolor textures, 3:2 landscape, gentle ambient light; friendly paper-
+        kite mascot named Sora with warm eyes and a short string tail, subtle Indian textile motif,
+        small clipboard; inclusive Indian setting; policy brief mood; no text, no logos, no watermarks;
+        no explicit anatomy, no medical procedures, no violence; cozy reading nook with abstract heart,
+        respect handshake, and smile icons on a poster; parent & teen reading a values card deck; soft
+        daylight
+    - page: 8
+      title: "Module C: SRH Navigation"
+      purpose: "Service literacy & dual protection concept (abstract)."
+      caption: "Parents learn where and how to access youth-friendly services; science-based choices, stigma-free."
+      sora_image_prompt: |
+        clean vector + soft watercolor textures, 3:2 landscape, gentle ambient light; friendly paper-
+        kite mascot named Sora with warm eyes and a short string tail, subtle Indian textile motif,
+        small clipboard; inclusive Indian setting; policy brief mood; no text, no logos, no watermarks;
+        no explicit anatomy, no medical procedures, no violence; youth-friendly clinic exterior icon,
+        map pins to verified centers, discrete pamphlet icons (shield, calendar, ribbon), no explicit
+        products shown; include: clinician
+    - page: 9
+      title: "Module D: Inclusion (SOGIESC)"
+      purpose: "Non-discrimination & allyship at home."
+      caption: "Words matter. Families model respect, challenge bias, and ensure every teen feels safe."
+      sora_image_prompt: |
+        clean vector + soft watercolor textures, 3:2 landscape, gentle ambient light; friendly paper-
+        kite mascot named Sora with warm eyes and a short string tail, subtle Indian textile motif,
+        small clipboard; inclusive Indian setting; policy brief mood; no text, no logos, no watermarks;
+        no explicit anatomy, no medical procedures, no violence; dining-table dialogue circle with three
+        teens; wall art of diverse abstract figures and a small rainbow-colored shield icon; warm
+        acceptance
+    - page: 10
+      title: "Module E: Pregnancy Options & Care-Seeking"
+      purpose: "Law-aware, safety-first help-seeking literacy (abstract)."
+      caption: "If a teen is in distress, parents know lawful, safe pathways and supportive language."
+      sora_image_prompt: |
+        clean vector + soft watercolor textures, 3:2 landscape, gentle ambient light; friendly paper-
+        kite mascot named Sora with warm eyes and a short string tail, subtle Indian textile motif,
+        small clipboard; inclusive Indian setting; policy brief mood; no text, no logos, no watermarks;
+        no explicit anatomy, no medical procedures, no violence; calm clinic consultation room with
+        neutral icons: legal scales, heart, phone helpline; parent and clinician seated, confidential
+        posture; no medical imagery
+    - page: 11
+      title: "Digital & Community Safety Add-On"
+      purpose: "Online privacy, reporting harm, bystander action."
+      caption: "At home: privacy habits, reporting channels, and how to help a friend safely."
+      sora_image_prompt: |
+        clean vector + soft watercolor textures, 3:2 landscape, gentle ambient light; friendly paper-
+        kite mascot named Sora with warm eyes and a short string tail, subtle Indian textile motif,
+        small clipboard; inclusive Indian setting; policy brief mood; no text, no logos, no watermarks;
+        no explicit anatomy, no medical procedures, no violence; family laptop scene with shield,
+        keyhole, and report-flag icons; teen demonstrating a report button to parent; posters with
+        generic hotline icon
+    - page: 12
+      title: "How the Private Academy Works"
+      purpose: "Training flow & quality assurance."
+      caption: "Certified trainers, evidence-based scripts, parent practice labs, helpline follow-ups."
+      sora_image_prompt: |
+        clean vector + soft watercolor textures, 3:2 landscape, gentle ambient light; friendly paper-
+        kite mascot named Sora with warm eyes and a short string tail, subtle Indian textile motif,
+        small clipboard; inclusive Indian setting; policy brief mood; no text, no logos, no watermarks;
+        no explicit anatomy, no medical procedures, no violence; workshop room with checklist, calendar,
+        and headset helpline icons; parents in small groups practicing with cue cards; include: trainer
+    - page: 13
+      title: "Safeguards & Ethics"
+      purpose: "Compliance with local law; non-sexualized, age-appropriate."
+      caption: "Age-gating, confidentiality, referrals; no explicit visuals; dignity and rights protected."
+      sora_image_prompt: |
+        clean vector + soft watercolor textures, 3:2 landscape, gentle ambient light; friendly paper-
+        kite mascot named Sora with warm eyes and a short string tail, subtle Indian textile motif,
+        small clipboard; inclusive Indian setting; policy brief mood; no text, no logos, no watermarks;
+        no explicit anatomy, no medical procedures, no violence; policy shield icon over a simple rules
+        board (gavel, lock, handshake icons); calm official vibe
+    - page: 14
+      title: "Monitoring & Evaluation"
+      purpose: "KPIs policy makers care about."
+      caption: "Uptake, parent confidence, respectful climate at home, safe referrals—tracked and reported."
+      sora_image_prompt: |
+        clean vector + soft watercolor textures, 3:2 landscape, gentle ambient light; friendly paper-
+        kite mascot named Sora with warm eyes and a short string tail, subtle Indian textile motif,
+        small clipboard; inclusive Indian setting; policy brief mood; no text, no logos, no watermarks;
+        no explicit anatomy, no medical procedures, no violence; dashboard imagery with simple charts
+        (bars/lines), icons only; Sora pointing to improving trend; include: policy leader observing
+    - page: 15
+      title: "Roadmap & Partnerships"
+      purpose: "Scale plan with schools, NGOs, CSR."
+      caption: "Pilot → evaluate → scale with partners; schools stay compliant; homes add depth."
+      sora_image_prompt: |
+        clean vector + soft watercolor textures, 3:2 landscape, gentle ambient light; friendly paper-
+        kite mascot named Sora with warm eyes and a short string tail, subtle Indian textile motif,
+        small clipboard; inclusive Indian setting; policy brief mood; no text, no logos, no watermarks;
+        no explicit anatomy, no medical procedures, no violence; India map with three pilot pins,
+        handshake icons between school/NGO/academy; document folders stacked neatly
+    - page: 16
+      title: "Call to Action / Back Cover"
+      purpose: "Crisp, fundable ask."
+      caption: "Approve pilots and parental training grants. Bridge the gap—safely, respectfully, now."
+      sora_image_prompt: |
+        clean vector + soft watercolor textures, 3:2 landscape, gentle ambient light; friendly paper-
+        kite mascot named Sora with warm eyes and a short string tail, subtle Indian textile motif,
+        small clipboard; inclusive Indian setting; policy brief mood; no text, no logos, no watermarks;
+        no explicit anatomy, no medical procedures, no violence; bridge of books at sunset between
+        school and home silhouettes; Sora giving a thumbs-up with clipboard; dignified sign-off mood

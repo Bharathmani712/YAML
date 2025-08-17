@@ -17,6 +17,11 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+  
+             "allowedCommonJsDependencies": [
+                "file-saver",
+                "jszip"
+             ],
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -35,13 +40,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "5MB",
+                  "maximumError": "5MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "5MB",
+                  "maximumError": "8MB"
                 }
               ],
               "outputHashing": "all"
@@ -87,5 +92,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "3e48d29a-68e7-4bd1-9614-4d4a43b16e41"
   }
 }

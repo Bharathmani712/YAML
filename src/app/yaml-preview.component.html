@@ -1,0 +1,15 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>YAML Preview</mat-card-title>
+    <span class="spacer"></span>
+    <button mat-stroked-button (click)="copy()">
+      <mat-icon>content_copy</mat-icon>&nbsp;{{ copied() ? 'Copied!' : 'Copy' }}
+    </button>
+    <button mat-raised-button color="primary" class="ml-2" (click)="download()">
+      <mat-icon>download</mat-icon>&nbsp;Download
+    </button>
+  </mat-card-header>
+  <mat-card-content>
+    <pre class="code" style="white-space: pre-wrap; line-height:1.4; font-size: 13px;">{{ yamlText }}</pre>
+  </mat-card-content>
+</mat-card>
