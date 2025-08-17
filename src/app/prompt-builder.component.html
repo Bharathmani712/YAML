@@ -4,19 +4,38 @@
     <mat-card-subtitle>Topic → type → options → preview</mat-card-subtitle>
   </mat-card-header>
 
-  <mat-card-content>
+  <mat-card-content [formGroup]="form">
     <div class="grid">
       <div class="col">
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Topic</mat-label>
-          <input matInput placeholder="e.g., Consent & Communication" formControlName="topic">
+          <input
+            matInput
+            placeholder="e.g., Consent & Communication"
+            formControlName="topic"
+          />
         </mat-form-field>
       </div>
       <div class="col">
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Prompt Type</mat-label>
           <mat-select formControlName="promptType">
-            <mat-option *ngFor="let t of ['Title Page (Text-only Poster)','Subtitle Page (Photoreal)','Character Sheet: Sora Kite','Character Sheet: Pixar Student','Scene: Photoreal Classroom','Dialogue Panel','Expression & Pose Sheet','3D Foreground Text']" [value]="t">{{t}}</mat-option>
+            <mat-option
+              *ngFor="
+                let t of [
+                  'Title Page (Text-only Poster)',
+                  'Subtitle Page (Photoreal)',
+                  'Character Sheet: Sora Kite',
+                  'Character Sheet: Pixar Student',
+                  'Scene: Photoreal Classroom',
+                  'Dialogue Panel',
+                  'Expression & Pose Sheet',
+                  '3D Foreground Text'
+                ]
+              "
+              [value]="t"
+              >{{ t }}</mat-option
+            >
           </mat-select>
         </mat-form-field>
       </div>
@@ -26,13 +45,13 @@
       <div class="col">
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Title (optional)</mat-label>
-          <input matInput formControlName="title">
+          <input matInput formControlName="title" />
         </mat-form-field>
       </div>
       <div class="col">
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Subtitle (optional)</mat-label>
-          <input matInput formControlName="subtitle">
+          <input matInput formControlName="subtitle" />
         </mat-form-field>
       </div>
     </div>
@@ -47,7 +66,9 @@
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Mood</mat-label>
           <mat-select formControlName="mood">
-            <mat-option *ngFor="let m of options.moods" [value]="m">{{m}}</mat-option>
+            <mat-option *ngFor="let m of options.moods" [value]="m">{{
+              m
+            }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -55,7 +76,9 @@
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Aspect Ratio</mat-label>
           <mat-select formControlName="aspect_ratio">
-            <mat-option *ngFor="let ar of options.aspectRatios" [value]="ar">{{ar}}</mat-option>
+            <mat-option *ngFor="let ar of options.aspectRatios" [value]="ar">{{
+              ar
+            }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -66,7 +89,9 @@
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Style</mat-label>
           <mat-select formControlName="style">
-            <mat-option *ngFor="let s of options.styles" [value]="s">{{s}}</mat-option>
+            <mat-option *ngFor="let s of options.styles" [value]="s">{{
+              s
+            }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -74,7 +99,9 @@
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Camera</mat-label>
           <mat-select formControlName="camera">
-            <mat-option *ngFor="let c of options.cameras" [value]="c">{{c}}</mat-option>
+            <mat-option *ngFor="let c of options.cameras" [value]="c">{{
+              c
+            }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -85,7 +112,9 @@
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Lighting</mat-label>
           <mat-select formControlName="lighting">
-            <mat-option *ngFor="let l of options.lighting" [value]="l">{{l}}</mat-option>
+            <mat-option *ngFor="let l of options.lighting" [value]="l">{{
+              l
+            }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -93,7 +122,11 @@
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Composition</mat-label>
           <mat-select formControlName="composition">
-            <mat-option *ngFor="let comp of options.composition" [value]="comp">{{comp}}</mat-option>
+            <mat-option
+              *ngFor="let comp of options.composition"
+              [value]="comp"
+              >{{ comp }}</mat-option
+            >
           </mat-select>
         </mat-form-field>
       </div>
@@ -102,12 +135,21 @@
     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Background</mat-label>
       <mat-select formControlName="background">
-        <mat-option *ngFor="let b of options.background" [value]="b">{{b}}</mat-option>
+        <mat-option *ngFor="let b of options.background" [value]="b">{{
+          b
+        }}</mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-slide-toggle formControlName="includeSoraCameo">Include Sora cameo</mat-slide-toggle>
-    <button mat-button type="button" (click)="insertSoraReusable()" matTooltip="Append the standard Sora cameo text into caption">
+    <mat-slide-toggle formControlName="includeSoraCameo"
+      >Include Sora cameo</mat-slide-toggle
+    >
+    <button
+      mat-button
+      type="button"
+      (click)="insertSoraReusable()"
+      matTooltip="Append the standard Sora cameo text into caption"
+    >
       <mat-icon>add</mat-icon> Insert Sora reusable cameo text
     </button>
 
@@ -116,54 +158,97 @@
     <div class="grid">
       <div class="col">
         <h3>Characters</h3>
-        <div class="row" *ngFor="let c of charactersFA.controls; let i = index;">
+        <div class="row" *ngFor="let c of charactersFA.controls; let i = index">
           <mat-form-field appearance="outline" class="w-100">
-            <mat-label>Character {{i+1}}</mat-label>
-            <input matInput [formControl]="c">
-            <button matSuffix mat-icon-button (click)="removeCharacter(i)" matTooltip="Remove"><mat-icon>delete</mat-icon></button>
+            <mat-label>Character {{ i + 1 }}</mat-label>
+            <input matInput [formControl]="c" />
+            <button
+              matSuffix
+              mat-icon-button
+              (click)="removeCharacter(i)"
+              matTooltip="Remove"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
           </mat-form-field>
         </div>
-        <button mat-stroked-button type="button" (click)="addCharacter()"><mat-icon>person_add</mat-icon> Add character</button>
+        <button mat-stroked-button type="button" (click)="addCharacter()">
+          <mat-icon>person_add</mat-icon> Add character
+        </button>
       </div>
 
       <div class="col">
         <h3>Dialogue</h3>
-        <div class="row" *ngFor="let d of dialogueFA.controls; let i = index;" [formGroup]="d">
+        <div
+          class="row"
+          *ngFor="let d of dialogueFA.controls; let i = index"
+          [formGroup]="d"
+        >
           <div class="row two">
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Speaker</mat-label>
-              <input matInput formControlName="speaker">
+              <input matInput formControlName="speaker" />
             </mat-form-field>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Line</mat-label>
-              <input matInput formControlName="line">
-              <button matSuffix mat-icon-button (click)="removeDialogue(i)" matTooltip="Remove"><mat-icon>delete</mat-icon></button>
+              <input matInput formControlName="line" />
+              <button
+                matSuffix
+                mat-icon-button
+                (click)="removeDialogue(i)"
+                matTooltip="Remove"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
             </mat-form-field>
           </div>
         </div>
-        <button mat-stroked-button type="button" (click)="addDialogue()"><mat-icon>forum</mat-icon> Add line</button>
+        <button mat-stroked-button type="button" (click)="addDialogue()">
+          <mat-icon>forum</mat-icon> Add line
+        </button>
       </div>
     </div>
 
     <h3>Text Overlays (for titles/captions inside image)</h3>
-    <div class="row" *ngFor="let o of overlaysFA.controls; let i = index;" [formGroup]="o">
+    <div
+      class="row"
+      *ngFor="let o of overlaysFA.controls; let i = index"
+      [formGroup]="o"
+    >
       <div class="row two">
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Text</mat-label>
-          <input matInput formControlName="text">
+          <input matInput formControlName="text" />
         </mat-form-field>
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Position</mat-label>
-          <input matInput formControlName="position" placeholder="e.g., top-center">
+          <input
+            matInput
+            formControlName="position"
+            placeholder="e.g., top-center"
+          />
         </mat-form-field>
       </div>
       <mat-form-field appearance="outline" class="w-100">
         <mat-label>Style</mat-label>
-        <input matInput formControlName="style" placeholder="e.g., bold headline, generous spacing">
-        <button matSuffix mat-icon-button (click)="removeOverlay(i)" matTooltip="Remove"><mat-icon>delete</mat-icon></button>
+        <input
+          matInput
+          formControlName="style"
+          placeholder="e.g., bold headline, generous spacing"
+        />
+        <button
+          matSuffix
+          mat-icon-button
+          (click)="removeOverlay(i)"
+          matTooltip="Remove"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
       </mat-form-field>
     </div>
-    <button mat-stroked-button type="button" (click)="addOverlay()"><mat-icon>title</mat-icon> Add overlay</button>
+    <button mat-stroked-button type="button" (click)="addOverlay()">
+      <mat-icon>title</mat-icon> Add overlay
+    </button>
 
     <mat-divider class="my-3"></mat-divider>
 
@@ -171,11 +256,15 @@
     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Policy guard-rails</mat-label>
       <mat-select formControlName="safeguards" multiple>
-        <mat-option *ngFor="let s of options.safeguardsBase" [value]="s">{{s}}</mat-option>
+        <mat-option *ngFor="let s of options.safeguardsBase" [value]="s">{{
+          s
+        }}</mat-option>
       </mat-select>
     </mat-form-field>
 
-    <ng-container *ngIf="form.get('promptType')?.value === '3D Foreground Text'">
+    <ng-container
+      *ngIf="form.get('promptType')?.value === '3D Foreground Text'"
+    >
       <mat-divider class="my-3"></mat-divider>
       <h3>3D Text</h3>
       <div [formGroup]="text3dFG">
@@ -183,7 +272,7 @@
           <div class="col">
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Text</mat-label>
-              <input matInput formControlName="text">
+              <input matInput formControlName="text" />
             </mat-form-field>
           </div>
           <div class="col">
@@ -225,10 +314,22 @@
 
     <mat-divider class="my-3"></mat-divider>
     <div class="actions">
-      <button mat-raised-button color="primary" (click)="applyPreset(presets[0].patch)">Preset: Subtitle + Sora cameo</button>
-      <button mat-stroked-button (click)="applyPreset(presets[1].patch)">Preset: Sora character sheet</button>
-      <button mat-stroked-button (click)="applyPreset(presets[2].patch)">Preset: Dialogue panel</button>
-      <button mat-stroked-button (click)="applyPreset(presets[3].patch)">Preset: 3D text</button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="applyPreset(presets[0].patch)"
+      >
+        Preset: Subtitle + Sora cameo
+      </button>
+      <button mat-stroked-button (click)="applyPreset(presets[1].patch)">
+        Preset: Sora character sheet
+      </button>
+      <button mat-stroked-button (click)="applyPreset(presets[2].patch)">
+        Preset: Dialogue panel
+      </button>
+      <button mat-stroked-button (click)="applyPreset(presets[3].patch)">
+        Preset: 3D text
+      </button>
     </div>
   </mat-card-content>
 </mat-card>
